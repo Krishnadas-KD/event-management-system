@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/stpage/style.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <title>Admin Dashboard Panel</title>
+</head>
+<style>
+    .alert {
+        padding: 20px;
+        background-color: #f44336;
+        color: white;
+    }
+    
+    .closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    
+    .closebtn:hover {
+        color: black;
+    }
+</style>
+<script>
+    setTimeout(function() {
+        var x = document.getElementById("alert");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }, 3000);
+</script>
+
+<body>
+    <nav>
+        <div class="logo-name">
+            <!-- <div class="logo-image">
+                <img src="images/logo.png" alt="">
+            </div> -->
+
+            <span class="logo_name">Eventcloud</span>
+        </div>
+
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li>
+                    <a href="/">
+                        <i class="uil uil-estate"></i>
+                        <span class="link-name">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/rview">
+                        <i class="uil uil-files-landscapes"></i>
+                        <span class="link-name">Result view</span>
+                    </a>
+                </li>
+
+            </ul>
+
+            <ul class="logout-mode">
+                <li>
+                    <a href="/logout">
+                        <i class="uil uil-signout"></i>
+                        <span class="link-name">Logout</span>
+                    </a>
+                </li>
+
+                <li class="mode">
+                    <a href="#">
+                        <i class="uil uil-moon"></i>
+                        <span class="link-name">Dark Mode</span>
+                    </a>
+
+                    <div class="mode-toggle">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="dashboard">
+        <div class="top">
+            <i class="uil uil-bars sidebar-toggle"></i>
+
+            <div class="search-box">
+                <i class="uil uil-search"></i>
+                <input type="text" placeholder="Search here...">
+            </div>
+
+        </div>
+
+        <div class="dash-content">
+            {% for error in messages %}
+            <div id="alert" class="alert">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> {{ error }}
+            </div>
+            {% endfor %}
+            <div class="overview">
+                <div class="title">
+                    <i class="uil uil-tachometer-fast-alt"></i>
+                    <span class="text"><a href="/eventchoose">REGISTER</a></span>
+                </div>
+
+                <div class="boxes">
+                    {% for ls in displaydata %}
+                    <div class="box box1">
+                        <i class="uil uil-thumbs-up"></i>
+                        <span class="text">{{ls.event}}</span>
+                        <span class="number">{{ls.chestno}}</span>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="../static/stpage/script.js"></script>
+</body>
+
+</html>

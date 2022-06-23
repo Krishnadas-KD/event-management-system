@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/style15.css">
+    <title>Admin Panel</title>
+</head>
+
+<body>
+    <div class="side-menu">
+        <div class="brand-name">
+            <h1>Dashboard</h1>
+        </div>
+        <ul>
+            <li><img src="reading-book (1).png" alt="">&nbsp;<span><a href="/">Home</a></span> </li>
+            <li><img src="reading-book (1).png" alt="">&nbsp;<span><a href="/sview">Students</a></span> </li>
+            <li><img src="teacher2.png" alt="">&nbsp;<span><a href="/tview">Teachers</a></span> </li>
+            <li><img src="reading-book (1).png" alt="">&nbsp;<span><a href="/Addevent">Add Events</a></span> </li>
+            <li><img src="reading-book (1).png" alt="">&nbsp;<span><a href="/resultbublish" >Result publish</a></span> </li>
+            <li><img src="settings.png" alt="">&nbsp;<span><a href="/logout">logout</a></span> </li>
+
+        </ul>
+    </div>
+    <div class="container">
+        <div class="header">
+            <div class="nav">
+                <div class="search">
+                    <input type="text" placeholder="Search..">
+                    <button type="submit"><img src="search.png" alt=""></button>
+                </div>
+                <div class="user">
+                    {% if cevent.event == "Arts" %}
+                    <a href="/eventswitcharts" class="btn">{{cevent.event}}</a> {% else %}
+                    <a href="/eventswitcharts" class="ubtn">Arts</a> {% endif %} {% if cevent.event == "Sports" %}
+                    <a href="eventswitchsports" class="btn">{{cevent.event}}</a> {% else %}
+                    <a href="eventswitchsports" class="ubtn">Sports</a> {% endif %} {% if cevent.event == "OFF" %}
+                    <a href="eventswitchoff" class="btn">{{cevent.event}}</a> {% else %}
+                    <a href="eventswitchoff" class="ubtn">OFF</a> {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="cards">
+                <div class="card">
+                    <div class="box">
+                        <h1>{{tcount}}</h1>
+                        <h3>Teachers</h3>
+                    </div>
+                    <div class="icon-case">
+                        <img src="students.png" alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="box">
+                        <h1>{{scount}}</h1>
+                        <h3>Students</h3>
+                    </div>
+                    <div class="icon-case">
+                        <img src="teachers.png" alt="">
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="content-2">
+                <div class="new-students">
+                    <div class="title">
+                        <h2>Teacher</h2>
+                    </div>
+
+                    <table>
+                        <tr>
+                            <th>Id</th>
+                            <th>Email</th>
+                        </tr>
+                        {% for te in techerstable %}
+                        <tr>
+                            <td>{{te.tid}}</td>
+                            <td>{{te.email}}</td>
+                        </tr>
+                        {% endfor %}
+
+                    </table>
+
+
+                </div>
+                <div class="new-students">
+                    <div class="title">
+                        <h2>Students</h2>
+                    </div>
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Admission No</th>
+                        </tr>
+                        {% for st in studentstable %}
+                        <tr>
+                            <td>{{st.username}}</td>
+                            <td>{{st.Admissionno}}</td>
+                        </tr>
+                        {% endfor %}
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

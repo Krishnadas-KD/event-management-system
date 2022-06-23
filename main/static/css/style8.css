@@ -1,0 +1,107 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(pink, violet, blue);
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+    height: 90vh;
+    animation: animate 10s linear infinite;
+}
+
+@keyframes animate {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+.wrapper {
+    width: 1170px;
+    margin: 5% auto;
+}
+
+.wrapper h2 {
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+    color: rgb(175, 3, 3);
+    margin: 0;
+}
+
+.single-service {
+    position: relative;
+    width: 25%;
+    height: 200px;
+    background: #fff;
+    box-sizing: border-box;
+    padding: 0 15px;
+    transition: .5s;
+    overflow: hidden;
+    float: left;
+    margin: 0 20px;
+    text-align: center;
+}
+
+.line {
+    width: 150px;
+    height: 3px;
+    margin: 0 auto 70px auto;
+    background: #fff;
+}
+
+.single-service p {
+    color: #262626;
+    font-size: 14px;
+}
+
+.single-service button {
+    font-size: 25px;
+    letter-spacing: 1px;
+    color: #080404;
+    cursor: grab;
+}
+
+button:hover {
+    background: #45424b;
+}
+
+.social {
+    width: 0px;
+    height: 0px;
+    margin: 25% auto;
+}
+
+.single-service span {
+    width: 100%;
+    left: -110%;
+    top: 0;
+    position: absolute;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    transition: .7s;
+    transform: skewX(10deg);
+}
+
+.single-service:hover span {
+    left: 110%;
+}
+
+@media(max-width:600px) {
+    .wrapper {
+        width: 100%;
+    }
+    .single-service {
+        width: 95%;
+        margin-bottom: 30px;
+    }
+    .wrapper h2 {
+        font: 23px;
+    }
+}
+
+.single-service:hover {
+    background: rgb(67, 196, 235);
+}

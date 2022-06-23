@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css">
+    <title>Document</title>
+</head>
+<script>
+    function printDiv() {
+        var printContents = document.getElementById('printarea').innerHTML;
+        var originalContents = document.body.innerHTML;
+
+        document.body.innerHTML = printContents;
+
+        window.print();
+
+        document.body.innerHTML = originalContents;
+    }
+</script>
+
+<style>
+    .container {
+        position: relative;
+        text-align: center;
+        color: white;
+        width: 600px;
+    }
+</style>
+
+<body>
+    <button style="border-radius: 5px; width:100px;height:40px;margin-bottom: 10px;" onclick="printDiv()">Print</button>
+    <div class="container" id="printarea">
+        <img src="../static/2.png" style="width:1200px;"> {% ifequal val.grade 'A' %}
+        <div class="bottom-left" style="
+        top: 610px;
+        left: 300px;font-size:50px
+    ">1st</div>{% endifequal %} {% ifequal val.grade 'B' %}
+        <div class="bottom-left" style="
+        top: 610px;
+        left: 300px;font-size:50px
+    ">2nd</div> {% endifequal %} {% ifequal val.grade 'C' %}
+        <div class="bottom-left" style="
+        top: 610px;
+        left: 300px;font-size:50px
+    ">3rd</div>{% endifequal %}
+
+        <div class="top-left" style="
+        top: 390px;
+        left: 320px; font-size:60px
+    "><span align="center">{{val.name}}</span></div>
+        <!-- <div class="img">
+            <img src="dasan.png">
+        </div> -->
+    </div>
+
+</body>
+
+</html>

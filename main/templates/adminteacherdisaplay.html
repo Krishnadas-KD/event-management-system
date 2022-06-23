@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/style15.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Admin Panel</title>
+</head>
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid rgb(5, 5, 5);
+    }
+    
+    th,
+    td {
+        text-align: left;
+        padding: 16px;
+    }
+    
+    .styled-table {
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        min-width: 400px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    th,
+    td {
+        width: 8rem;
+        text-align: center;
+        color: black;
+        font-size: larger;
+        font-weight: bold;
+    }
+    
+    .styled-table thead tr {
+        background-color: #009879;
+        color: #ffffff;
+        text-align: left;
+    }
+    
+    .styled-table th,
+    .styled-table td {
+        padding: 12px 15px;
+    }
+    
+    .styled-table tbody tr {
+        border-bottom: 1px solid #dddddd;
+    }
+    
+    .styled-table tbody tr:nth-of-type(even) {
+        background-color: #f3f3f3;
+    }
+    
+    .styled-table tbody tr:last-of-type {
+        border-bottom: 2px solid #ecd7e6;
+    }
+    
+    .styled-table tbody tr.active-row {
+        font-weight: bold;
+        color: #009879;
+    }
+    
+    html,
+    body {
+        margin: 0;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+    }
+    
+    .bg-container {
+        margin-top: 10%;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        background: url(tab.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+</style>
+
+<body>
+    <div class="side-menu">
+        <div class="brand-name">
+            <h1>Dashboard</h1>
+        </div>
+        <ul>
+            <li><img src="reading-book (1).png" alt="">&nbsp;<span><a href="/">Home</a></span> </li>
+            <li><img src="reading-book (1).png" alt="">&nbsp;<span><a href="/sview">Students</a></span> </li>
+            <li><img src="teacher2.png" alt="">&nbsp;<span><a href="/tview">Teachers</a></span> </li>
+            <li><img src="reading-book (1).png" alt="">&nbsp;<span><a href="/Addevent">Add Events</a></span> </li>
+            <li><img src="reading-book (1).png" alt="">&nbsp;<span><a href="/resultbublish" >Result publish</a></span> </li>
+            <li><img src="settings.png" alt="">&nbsp;<span><a href="/logout">logout</a></span> </li>
+        </ul>
+    </div>
+    <div class="container">
+        <div class="header">
+            <div class="nav">
+                <div class="search">
+                    <input type="text" placeholder="Search..">
+                    <button type="submit"><img src="search.png" alt=""></button>
+                </div>
+
+            </div>
+        </div>
+        <div class="bg-container">
+
+
+
+            <table class="styled-table" style="padding-top:30px;">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Email</th>
+                        <th>duty </th>
+                        <th>Change/Enter Duty </th>
+
+                        <th>&nbsp;</th>
+                </thead>
+                <tbody>
+                    </tr>
+                    {% for ls in displaydata %}
+                    <tr>
+                        <td>{{ls.tid}}</td>
+                        <td>{{ls.email}}</td>
+                        <td>{{ls.mangingfevent}}</td>
+                        <td>
+                            <form action="/assignduty/{{ls.tid}}" method="post"> {% csrf_token %}<select name="event" id="cars">
+                                <option selected>None</option>
+                                {% for ls in eventlist %}
+                                <option value="{{ls.event}}">{{ls.event}}</option>  
+                                {% endfor %}
+             
+                          </select>
+                                <br><br>
+                                <input type="submit" value="Submit"> </form>
+                        </td>
+                        <td><a style="font-size:24px;color: red;" href="/tdelete/{{ls.tid}}"><i class="fa fa-trash-o"></i></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+</body>
+
+</html>

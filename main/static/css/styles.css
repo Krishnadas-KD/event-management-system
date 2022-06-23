@@ -1,0 +1,114 @@
+body{
+    margin: 0;
+    padding:0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction:column ;
+    background-image: url(pic2.jpg);
+    background-size: cover;
+    background-position: center;
+    color: rgb(8, 6, 6);
+    padding: 0;
+
+}
+h2{
+    font-family:'Cookie', cursive;
+    font-size: 70px;
+}
+.nav{
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 10px;
+}
+.nav span{
+    margin-left: 20px;
+
+}
+.about-us{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+
+}
+.who{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+.who span{
+    width: 60%;
+    align-items: center;
+    text-align: center;
+}
+.cards{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    flex-wrap: wrap;
+
+}
+.card-img{
+    border-radius:5px ;
+
+}
+.cards .card{
+    width: 16rem;
+    margin: 20px;
+
+}
+.card p{
+    font-size: 20px;
+}
+.social-media i{
+    margin: 10px;
+}
+.social-media{
+	width: 90%;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.active{
+	border-bottom: 1px solid #fff;
+}
+.card-img1{
+	width: 100%;
+	height: 12rem;
+	background-image: url('1.jpg');
+	background-size: cover;
+	background-position: center center;
+}
+.card-img2{
+	width: 100%;
+	height: 12rem;
+	background-image: url('2.jpg');
+	background-size: cover;
+	background-position: center center;
+}
+.card-img3{
+	width: 100%;
+	height: 12rem;
+	background-image: url('1.jpg');
+	background-size: cover;
+	background-position: center center;
+}
+.card-img4{
+	width: 100%;
+	height: 12rem;
+	background-image: url('2.jpg');
+	background-size: cover;
+	background-position: center center;
+}
+

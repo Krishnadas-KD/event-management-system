@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/style15.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Admin Panel</title>
+</head>
+
+<body>
+    <div class="side-menu">
+        <div class="brand-name">
+            <h1>Dashboard</h1>
+        </div>
+        <ul>
+            <li><img src="reading-book (1).png" alt="">&nbsp;<span><a href="/">Home</a></span> </li>
+            <li><img src="reading-book (1).png" alt="">&nbsp;<span><a href="/sview">Students</a></span> </li>
+            <li><img src="teacher2.png" alt="">&nbsp;<span><a href="/tview">Teachers</a></span> </li>
+            <li><img src="reading-book (1).png" alt="">&nbsp;<span><a href="/Addevent">Add Events</a></span> </li>
+            <li><img src="reading-book (1).png" alt="">&nbsp;<span><a href="/resultbublish" >Result publish</a></span> </li>
+            <li><img src="settings.png" alt="">&nbsp;<span><a href="/logout">logout</a></span> </li>
+        </ul>
+    </div>
+    <div class="container">
+        <div class="header">
+            <div class="nav">
+                <div class="search">
+                    <input type="text" placeholder="Search..">
+                    <button type="submit"><img src="search.png" alt=""></button>
+                </div>
+                <div class="user">
+                    {% if cevent.event == "Arts" %}
+                    <a href="/eventswitcharts" class="btn">{{cevent.event}}</a> {% else %}
+                    <a href="/eventswitcharts" class="ubtn">Arts</a> {% endif %} {% if cevent.event == "Sports" %}
+                    <a href="eventswitchsports" class="btn">{{cevent.event}}</a> {% else %}
+                    <a href="eventswitchsports" class="ubtn">Sports</a> {% endif %} {% if cevent.event == "OFF" %}
+                    <a href="eventswitchoff" class="btn">{{cevent.event}}</a> {% else %}
+                    <a href="eventswitchoff" class="ubtn">OFF</a> {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="cards">
+                <div class="card">
+                    <div class="box">
+                        <Form action="/addsports" method="post">
+                            {% csrf_token %}
+                            <h1>Add Sports </h1>
+                            <h1><input type="text" name="eventn" /></h1>
+                            <h3><input type="submit" name="add"></h3>
+                        </Form>
+                    </div>
+                    <div class="icon-case">
+                        <img src="students.png" alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="box">
+                        <Form action="/addarts" method="post">
+                            {% csrf_token %}
+                            <h1>Add Arts </h1>
+                            <h1><input type="text" name="eventn" /></h1>
+                            <h3><input type="submit" name="add"></h3>
+                        </Form>
+                    </div>
+                    <div class="icon-case">
+                        <img src="teachers.png" alt="">
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="content-2">
+                <div class="new-students">
+                    <div class="title">
+                        <h2>Sports</h2>
+                    </div>
+                    <table>
+                        <tr>
+                            <th>Sports</th>
+                            <th>&nbsp</th>
+                        </tr>
+                        {% for te in eventlist %}{% if te.aors == "Sports" %}
+                        <tr>
+
+                            <td>{{te.event}}</td>
+                            <td><a style="font-size:24px; color: rgb(227, 0, 0);" href="/sedelete/{{te.pk}}"><i class="fa fa-trash-o"></i></a></td>
+
+                        </tr>
+                        {% endif %} {% endfor %}
+                    </table>
+
+                </div>
+                <div class="new-students">
+                    <div class="title">
+                        <h2>Arts</h2>
+                    </div>
+                    <table>
+                        <tr>
+                            <th>Arts</th>
+                            <th>&nbsp</th>
+                        </tr>
+                        {% for te in eventlist %} {% if te.aors == "Arts" %}
+                        <tr>
+
+                            <td>{{te.event}}</td>
+                            <td><a style="font-size:24px; color: rgb(227, 0, 0);" href="/aedelete/{{te.pk}}"><i class="fa fa-trash-o"></i></a></td>
+                        </tr>
+                        {% endif %} {% endfor %}
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

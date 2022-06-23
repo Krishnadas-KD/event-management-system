@@ -1,0 +1,45 @@
+.container {
+    position: relative;
+    text-align: center;
+    color: white;
+    width: 600px;
+}
+
+.bottom-left {
+    position: absolute;
+    color: black;
+    bottom: 8px;
+    left: 16px;
+    padding-left: 280px;
+    padding-bottom: 70px;
+    font-size: 30px;
+}
+
+.top-left {
+    position: absolute;
+    color: black;
+    bottom: 8px;
+    left: 16px;
+    padding-left: 240px;
+    padding-bottom: 165px;
+    font-size: 30px;
+}
+
+.top-right {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+}
+
+.bottom-right {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

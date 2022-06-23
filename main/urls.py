@@ -1,0 +1,36 @@
+from django.contrib import admin
+from django.urls import path,include
+from main.views import *
+urlpatterns = [
+    path('', index),
+    path('slogin', stlogin),
+    path('tlogin', techlogin),
+    path('about', about),
+    path('aedelete/<str:eventname>', aedelete),
+    path('sedelete/<str:eventname>', sedelete),
+
+    path('tlogincheck', tlogincheck),
+    path('slogincheck', slogincheck),
+    path('streg', sregistraion),
+    path('treg', tregistration),
+    path('eventswitchoff', eventswitchoff),
+    path('eventswitchsports', eventswitchsports),
+    path('eventswitcharts', eventswitcharts),
+    path('sdelete/<str:adno>',sdelete),
+    path('tdelete/<str:id>',tdelete),
+    path('tview', teacherview),
+    path('sview', studentview),
+    path('Addevent', Addevent),
+    path('addsports', addsports),
+    path('addarts', addarts),
+    path('assignduty/<str:ids>',assignduty),
+    path('eventchoose',eventchoose),
+    path('registerevent', registerevent),
+    path('enterresult', enterresult),
+    path('addresult', addresult),
+    path('rank', rank),
+    path('print/<str:eventname>', printit),
+    path('rview', rview),
+    path('resultbublish',resultbublish),
+    path('logout', logout),
+]

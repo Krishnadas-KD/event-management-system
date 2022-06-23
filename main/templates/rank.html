@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Section Project</title>
+    <link rel="stylesheet" href="../static/css/style10.css">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Indie+Flower|Montserrat|Quicksand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&family=The+Nautigal:wght@700&family=Twinkle+Star&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    {% if cevent.event == "Arts" %} {{cevent.event}}{% endif %} {% if cevent.event == "Sports" %} {{cevent.event}}{% endif %} {% if cevent.event == "OFF" %} {{cevent.event}} {% endif %}
+    </div>
+    {% ifequal resultlist.result 'not publish' %}
+    <span style="font-size: 25px; color: rgb(110, 110, 110);margin-left: 30%;">Result not pabulished</span>{% else %} {% for user in ranklist %} {% ifequal user.grade 'A' %}
+    <div class="main">
+        <h1>{{user.event}}</h1>
+        <div class="profile-card">
+            <div class="img">
+                <img src="../static/img/1.jpg">
+            </div>
+            <div class="caption">
+                <h3>{{user.name}}</h3>
+                <p>1st Rank</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        {% for l in ranklist %} {% ifequal l.grade 'B' %} {% ifequal l.event user.event %}
+        <div class="profile-card">
+            <div class="img">
+                <img src="../static/img/1.jpg">
+            </div>
+            <div class="caption">
+                <h3>{{l.name}}</h3>
+                <p>2nd Rank</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        {% endifequal %} {% endifequal %} {% endfor %} {% for ls in ranklist %} {% ifequal ls.grade 'B' %} {% ifequal ls.event user.event %}
+        <div class="profile-card">
+            <div class="img">
+                <img src="../static/img/1.jpg">
+            </div>
+            <div class="caption">
+                <h3>{{ls.name}}</h3>
+                <p>3rd Rank</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        {% endifequal %} {% endifequal %} {% endfor %} </div>{% endifequal %}<br> {% endfor %}{% endifequal %}
+
+
+
+
+
+
+</body>
+
+</html>

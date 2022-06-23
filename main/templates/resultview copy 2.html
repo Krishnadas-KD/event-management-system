@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/style15.css">
+    <link rel="stylesheet" href="../static/css/style8.css">
+    <title>Admin Panel</title>
+
+</head>
+<style>
+    .alert {
+        padding: 20px;
+        background-color: #f44336;
+        color: white;
+    }
+    
+    .closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    
+    .closebtn:hover {
+        color: black;
+    }
+</style>
+<script>
+    setTimeout(function() {
+        var x = document.getElementById("alert");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }, 3000);
+</script>
+
+<body>
+    <div class="side-menu">
+        <div class="brand-name">
+            <h1>Dashboard</h1>
+        </div>
+        <ul>
+            <li>&nbsp;<span><a href="/">Home</a></span> </li>
+            <li>&nbsp;<span><a href="/rview">Result view</a></span> </li>
+            <li><img src="settings.png" alt="">&nbsp;<span><a href="/logout">logout</a></span> </li>
+
+        </ul>
+    </div>
+
+    <div class="container">
+        <div class="container">
+            <div class="header">
+                <div class="nav">
+                    <div class="search">
+                        <input type="text" placeholder="Search..">
+                        <button type="submit"><img src="search.png" alt=""></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content">
+                {% ifequal resultlist.result 'not publish' %}
+                <span style="font-size: 25px; color: rgb(110, 110, 110);margin-left: 30%;">Result not pabulished</span>{% else %}
+                <div class="cards">
+                    {% for i in val %}
+                    <div class="card">
+                        <div class="box">
+                            <h1>{{i.event}}</h1>
+                            <p>{{i.grade}}</p>
+                        </div>
+                        {% ifequal i.grade 'A' %}
+                        <p><a href="/print/{{i.event}}">Congratulation you won 1st rank download user cerificate here<a></a> {% endifequal %} {% ifequal i.grade 'B' %}
+                            <p><a href="/print/{{i.event}}">Congratulation you won 2nd rank download user cerificate here<a></a> {% endifequal %} {% ifequal i.grade 'C' %}
+                                <p><a href="/print/{{i.event}}">Congratulation you won 3rd rank download user cerificate here<a></a>{% endifequal %}
+                    </div>
+                    {% endfor %}
+
+                </div>
+
+            </div>
+            {% endifequal %}
+
+        </div>
+</body>
+
+</html>
